@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+/* Styling för lösningar 1-6*/
+/*
+section.gridcontainer {
+    margin-top: 10rem;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-gap: 20px;
+}
+
+.item {
+    padding: 20px 40px;
+    border-radius: 5px;
+    color: rgb(241, 233, 233);
+    background-color: rgb(74, 70, 70);
+    font-size: 150%;
+}
+*/
+/* 1. Såhär placerar vi ut items i grid */
+/*
+.a {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.b {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.c {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+.d {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+.e {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+.f {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+*/
+/* Detta går att göra med mindre kod i exempel nedan*/
+
+/* 2. Här kan vi halvera rader kod med att skriva vilken linje boxen skall börja vid innan / och vart den skall sluta efter.*/
+/*
+.a {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.b {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.c {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.d {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.e {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.f {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+*/
+/* Även detta går att göra på ett förkortat sätt*/
+/* 3. The order of the values is 
+      row-start/column-start/row-end/column-end.*/
+/*
+.a {
+    grid-area: 1 / 1 / 2 / 2;
+}
+.b {
+    grid-area: 1 / 2 / 2 / 3;
+}
+.c {
+    grid-area: 1 / 3 / 2 / 4;
+}
+.d {
+    grid-area: 2 / 1 / 3 / 2;
+}
+.e {
+    grid-area: 2 / 2 / 3 / 3;
+}
+.f {
+    grid-area: 2 / 3 / 3 / 4;
+}
+*/
+/* 4. Vill vi att en ruta skall ta mer plats kan vi göra såhär.
+    Då kan rutan gå över både columns och rows*/
+/*
+.a {
+    grid-column: 1 / 3;
+    grid-row: 1 ;
+}
+.b {
+    grid-column: 3;
+    grid-row: 1 / 3;
+}
+.c {
+    grid-column: 1;
+    grid-row: 2;
+}
+.d {
+    grid-column: 2;
+    grid-row: 2;
+}
+*/
+/* 5. Ovan går även att göra med /span i exemplet nedan*/ 
+/*
+.a {
+    grid-column: 1 / span 2;
+    grid-row: 1 ;
+}
+.b {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+.c {
+    grid-column: 1;
+    grid-row: 2;
+}
+.d {
+    grid-column: 2;
+    grid-row: 2;
+}
+*/
+/* 6. Det går även att namnge raderna i både columns och rows för att
+sedan använda namnen vid placering av rutorna */
+/*
+.gridcontainer {
+    display: grid;
+grid-gap: 10px;
+    grid-template-columns: [col1-start] 100px  [col2-start] 100px  [col3-start] 100px [col3-end];
+    grid-template-rows: [row1-start] auto [row2-start] auto [row2-end];
+    background-color: #fff;
+    color: #444;
+}
+
+.item {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+
+}
+
+.a {
+    grid-column: col1-start / col3-start;
+    grid-row: row1-start ;
+}
+.b {
+    grid-column: col3-start ;
+    grid-row: row1-start / row2-end;
+}
+.c {
+    grid-column: col1-start;
+    grid-row: row2-start ;
+}
+.d {
+    grid-column: col2-start ;
+    grid-row: row2-start ;
+}
+*/ 
+/* 7. Här precis som i övning ovan så har vi namngett raderna för 
+rows och columns. Gör man på detta sätt kan man använda sig av /span*/
+/*
+.gridcontainer {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: [col] 100px [col] 100px [col] 100px [col] 100px;
+    grid-template-rows: [row] auto [row] auto [row] ;
+    background-color: #fff;
+    color: #444;
+}
+
+.item {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+
+}
+
+.a {
+    grid-column: col / span 2;
+    grid-row: row ;
+}
+.b {
+    grid-column: col 3 / span 2 ;
+    grid-row: row ;
+}
+.c {
+    grid-column: col ;
+    grid-row: row 2 ;
+}
+.d {
+    grid-column: col 2 / span 3 ;
+    grid-row: row 2 ;
+}
+
+.e {
+    grid-column: col / span 4;
+    grid-row: row 3;
+}
+*/
+/* 8. Här kan vi använda oss av tidigare lösning men blanda in repeat()
+för att spara kod och tid */ 
+/*
+.gridcontainer {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, [col] 100px);
+    grid-template-rows: repeat(3, [row] auto);
+    background-color: #fff;
+    color: #444;
+}
+
+.item {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.a {
+    grid-column: col / span 2;
+    grid-row: row ;
+}
+
+.b {
+    grid-column: col 3 / span 2;
+    grid-row: row;
+}
+
+.c {
+    grid-column: col;
+    grid-row: row 2;
+}
+
+.d {
+    grid-column: col 2 /span 3;
+    grid-row: row 2;
+}
+
+.e {
+    grid-column: col /span 4;
+    grid-row: 3;
+}
+*/
+
+/* 9. När man använder sig av grid så definerar man antal columns och rows
+i form av de tidigare exemplen, (MEN!) om man använder sig av 
+grid-auto-columns så kommer grid att lägga till columns till gridden för 
+att hålla innehållet */ 
+/*
+.gridcontainer {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 100px 100px 100px;
+    grid-auto-columns: 100px;
+    background-color: #fff;
+    color: #444;
+}
+
+.item {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.a {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+.b {
+    grid-column: 3;
+    grid-row: 1 / 3;
+}
+.c {
+    grid-column: 1 / 2;
+    grid-row: 2;
+}
+.d {
+    grid-column: 2 / 3;
+    grid-row: 2;
+}
+.e {
+    grid-column: 4 / 5;
+    grid-row: 1 / 4;
+}
+*/
+
+/* 10. */
